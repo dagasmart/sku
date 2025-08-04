@@ -1,12 +1,12 @@
 <?php
 
-namespace Slowlyo\OwlSku\Services;
+namespace Slowlyo\Sku\Services;
 
-use Slowlyo\OwlSku\Sku;
+use DagaSmart\BizAdmin\Sku;
 use Illuminate\Support\Arr;
-use Slowlyo\OwlSku\Models\Goods;
+use DagaSmart\BizAdmin\Sku\Models\Goods;
 use Illuminate\Support\Facades\DB;
-use Slowlyo\OwlAdmin\Services\AdminService;
+use DagaSmart\BizAdmin\Services\AdminService;
 
 class GoodsService extends AdminService
 {

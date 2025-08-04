@@ -1,8 +1,8 @@
 <?php
 
-namespace Slowlyo\OwlSku\Models;
+namespace DagaSmart\Sku\Models;
 
-use Slowlyo\OwlAdmin\Models\BaseModel;
+use DagaSmart\BizAdmin\Models\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GoodsSku extends BaseModel
