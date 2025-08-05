@@ -1,13 +1,13 @@
 <?php
 
-namespace Slowlyo\OwlSku;
+namespace DagaSmart\Sku;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Slowlyo\OwlSku\Models\GoodsSku;
-use Slowlyo\OwlSku\Models\GoodsSpec;
-use Slowlyo\OwlSku\Models\GoodsSpecGroup;
-use Slowlyo\OwlAdmin\Renderers\ComboControl;
+use DagaSmart\Sku\Models\GoodsSku;
+use DagaSmart\Sku\Models\GoodsSpec;
+use DagaSmart\Sku\Models\GoodsSpecGroup;
+use DagaSmart\BizAdmin\Renderers\ComboControl;
 
 class Sku
 {
@@ -175,7 +175,7 @@ class Sku
             return $item;
         })->toArray();
 
-        return compact('groups', 'skus');
+        return ['groups' => $groups, 'skus' => $skus];
     }
 
     /**
@@ -187,12 +187,12 @@ class Sku
      */
     public function echoData($goodsId)
     {
-        $groups = GoodsSpecGroup::with('specs')->where('goods_id', $goodsId)->get()->map(fn($item) => [
+        $groups = GoodsSpecGroup::with('specs')->where(['goods_id' => $goodsId])->get()->map(fn($item) => [
             'group_name' => $item->name,
             'specs'      => $item->specs->map(fn($val) => ['spec' => $val->name])->toArray(),
         ])->toArray();
 
-        return compact('groups');
+        return ['groups' => $groups];
     }
 
     /**
@@ -205,7 +205,7 @@ class Sku
      */
     public function mergeExistsData(int $goodsId, array &$value)
     {
-        $skus = GoodsSku::where('goods_id', $goodsId)->get()->map(function ($item) {
+        $skus = GoodsSku::where(['goods_id' => $goodsId])->get()->map(function ($item) {
             // 计算 规格组 + 规格值 的 md5
             $skuSpecs = collect($item->sku_json)
                 ->map(fn($item) => md5(md5($item['group']['name']) . $item['spec']['name']))

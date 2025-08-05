@@ -1,21 +1,23 @@
 <?php
 
-namespace Slowlyo\OwlSku\Http\Controllers;
+namespace DagaSmart\Sku\Http\Controllers;
 
-use Slowlyo\OwlSku\Sku;
+use DagaSmart\Sku;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
-use Slowlyo\OwlAdmin\Renderers\BaseRenderer;
-use Slowlyo\OwlAdmin\Controllers\AdminController;
+use DagaSmart\BizAdmin\Renderers\BaseRenderer;
+use DagaSmart\BizAdmin\Controllers\AdminController;
 
-class OwlSkuController extends AdminController
+class SkuController extends AdminController
 {
     /**
      * 生成 sku
      *
      * @param Request $request
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\JsonResource
+     * @return JsonResponse|JsonResource
      */
     public function generate(Request $request)
     {

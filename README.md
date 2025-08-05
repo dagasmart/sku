@@ -1,9 +1,9 @@
-# Owl Admin 扩展: SKU
+# BizAdmin 扩展: SKU
 
 ## !! 前提
 
 1. 需要熟悉常规商城 `sku` 的处理逻辑
-2. 熟练使用 `laravel` 以及 `Owl Admin`
+2. 熟练使用 `laravel` 以及 `BizAdmin`
 3. 拥有自行查阅源码的能力 (重点)
 
 ## 使用说明
@@ -56,7 +56,7 @@
 原理: 通过 `combo` 组件, 结合后端代码, 实现了一个灵活的 sku 编辑器
 
 ```php
-use Slowlyo\OwlSku\Sku;
+use DagaSmart\Sku\Sku;
 
 // ...
 
@@ -80,14 +80,14 @@ amis()->Form()->body([
 
 #### sku 数据保存
 
-在 `Slowlyo\OwlSku\Services\GoodsService` 中, 已经处理了新增商品和编辑商品的逻辑
+在 `DagaSmart\Sku\Services\GoodsService` 中, 已经处理了新增商品和编辑商品的逻辑
 
 可直接使用或重写
 
 #### sku 数据回显
 
 ```php
-use Slowlyo\OwlSku\Sku;
+use DagaSmart\Sku\Sku;
 
 // 需要确保 sku 组件同级的数据域中有 id 字段, 值为 goods 表的 id (用于回显 sku 列表)
 
